@@ -10,7 +10,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             // El texto que deseas copiar
             const textToCopy = "https://chat.whatsapp.com/G67Yz4Y5HIe86IeBfPPIPv";
-            
+
             // Crear un área de texto invisible
             const textArea = document.createElement('textarea');
             textArea.value = textToCopy;
@@ -23,10 +23,16 @@
             // Intentar copiar el texto al portapapeles
             try {
                 const successful = document.execCommand('copy');
-                const msg = successful ? 'Texto copiado al portapapeles' : 'Error al copiar el texto';
-                alert(msg);
+                if (successful) {
+                    console.log('Texto copiado exitosamente');
+                    alert('Texto copiado al portapapeles');
+                } else {
+                    console.log('Error al copiar el texto');
+                    alert('Error al copiar el texto');
+                }
             } catch (err) {
                 console.error('Oops, no se pudo copiar', err);
+                alert('Oops, no se pudo copiar');
             }
 
             // Eliminar el área de texto
