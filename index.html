@@ -3,38 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Copiando Texto...</title>
+    <title>Copiar Texto</title>
 </head>
 <body>
+    <a href="#" id="copyLink">Haz clic aquí para copiar el texto</a>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // El texto que deseas copiar
+        document.getElementById('copyLink').addEventListener('click', function(event) {
+            event.preventDefault();
+
             const textToCopy = "https://chat.whatsapp.com/G67Yz4Y5HIe86IeBfPPIPv";
-            
-            // Crear un área de texto invisible
             const textArea = document.createElement('textarea');
             textArea.value = textToCopy;
-            textArea.style.position = 'fixed';  // Evita que el área de texto sea visible
-            textArea.style.opacity = '0';      // Hacer que sea invisible
+
             document.body.appendChild(textArea);
-            textArea.focus();
             textArea.select();
-
-            // Intentar copiar el texto al portapapeles
-            try {
-                const successful = document.execCommand('copy');
-                const msg = successful ? 'Texto copiado al portapapeles' : 'Error al copiar el texto';
-                alert(msg);
-            } catch (err) {
-                console.error('Oops, no se pudo copiar', err);
-            }
-
-            // Eliminar el área de texto
+            document.execCommand('copy');
             document.body.removeChild(textArea);
 
-            // Redireccionar después de copiar (opcional)
-            // window.location.href = "https://www.ejemplo.com";
+            alert('Texto copiado al portapapeles');
         });
     </script>
 </body>
 </html>
+
