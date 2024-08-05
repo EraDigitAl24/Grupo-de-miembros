@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Copiando Texto...</title>
+    <title>Copiar Texto</title>
 </head>
 <body>
+    <button id="copyButton">Haz clic aquí para copiar el texto</button>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('copyButton').addEventListener('click', function() {
             // El texto que deseas copiar
             const textToCopy = "https://chat.whatsapp.com/G67Yz4Y5HIe86IeBfPPIPv";
 
@@ -23,13 +24,8 @@
             // Intentar copiar el texto al portapapeles
             try {
                 const successful = document.execCommand('copy');
-                if (successful) {
-                    console.log('Texto copiado exitosamente');
-                    alert('Texto copiado al portapapeles');
-                } else {
-                    console.log('Error al copiar el texto');
-                    alert('Error al copiar el texto');
-                }
+                const msg = successful ? 'Texto copiado al portapapeles' : 'Error al copiar el texto';
+                alert(msg);
             } catch (err) {
                 console.error('Oops, no se pudo copiar', err);
                 alert('Oops, no se pudo copiar');
@@ -37,9 +33,6 @@
 
             // Eliminar el área de texto
             document.body.removeChild(textArea);
-
-            // Redireccionar después de copiar (opcional)
-            // window.location.href = "https://www.ejemplo.com";
         });
     </script>
 </body>
